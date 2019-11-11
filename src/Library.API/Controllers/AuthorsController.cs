@@ -3,6 +3,7 @@ using Library.API.Entities;
 using Library.API.Helpers;
 using Library.API.Models;
 using Library.API.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,8 @@ namespace Library.API.Controllers
                 return BadRequest();
             }
 
+
+
             var authorEntity = Mapper.Map<Author>(author);
 
             _libraryRepository.AddAuthor(authorEntity);
@@ -63,6 +66,37 @@ namespace Library.API.Controllers
             var authorToReturn = Mapper.Map<AuthorDTO>(authorEntity);
 
             return CreatedAtRoute("GetAuthor", new { id = authorToReturn.Id }, authorToReturn);
+        }
+
+
+        [HttpPost ("{id}")]
+        public IActionResult BlockAuthorCreation(Guid id)
+        {
+            if (_libraryRepository.AuthorExists(id))
+            {
+                return new StatusCodeResult(StatusCodes.Status409Conflict);
+            }
+
+            return NotFound();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteAuthor(Guid id)
+        {
+            var authorFromRepo = _libraryRepository.GetAuthor(id);
+            if (authorFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _libraryRepository.DeleteAuthor(authorFromRepo);
+
+            if (!_libraryRepository.Save())
+            {
+                throw new Exception($"Deleting failed for author {id} on save.");
+            }
+
+            return NoContent();
         }
     }
 }

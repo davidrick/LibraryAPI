@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Data.Sqlite;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -34,12 +35,17 @@ namespace Library.API
             {
                 setupAction.ReturnHttpNotAcceptable = true;
                 setupAction.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
+                setupAction.InputFormatters.Add(new XmlDataContractSerializerInputFormatter());
             });
+            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            userName = userName.ToString().Split(new Char[] {'\\'})[1];
+            
+            //Use if connection string is setup through appsettings
+            //var connectionString = Configuration["connectionStrings:libraryDBConnectionString"];
 
-            // register the DbContext on the container, getting the connection string from
-            // appSettings (note: use this during development; in a production environment,
-            // it's better to store the connection string in an environment variable)
-            var connectionString = Configuration["connectionStrings:libraryDBConnectionString"];
+            //Dynamically create SQL Lite db inthe root of the user 
+            var connectionString = $"Data Source = c:\\users\\{userName}\\library.db";
+
             services.AddDbContext<LibraryContext>(o => o.UseSqlite(connectionString));
             
             // register the repository
@@ -77,7 +83,12 @@ namespace Library.API
                 cfg.CreateMap<Entities.Book, Models.BookDTO>();
 
                 cfg.CreateMap<Models.AuthorForCreationDto, Entities.Author>();
+
                 cfg.CreateMap<Models.BookForCreationDto, Entities.Book>();
+
+                cfg.CreateMap<Models.BookForUpdateDto, Entities.Book>();
+
+                cfg.CreateMap<Entities.Book, Models.BookForUpdateDto>();
             });
 
             libraryContext.EnsureSeedDataForContext();

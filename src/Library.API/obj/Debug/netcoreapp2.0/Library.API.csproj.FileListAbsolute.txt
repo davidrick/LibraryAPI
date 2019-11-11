@@ -20,3 +20,14 @@ C:\MyDevelopment\Library\src\Library.API\obj\Debug\netcoreapp2.0\Library.API.Ass
 C:\MyDevelopment\Library\src\Library.API\obj\Debug\netcoreapp2.0\Library.API.AssemblyInfo.cs
 C:\MyDevelopment\Library\src\Library.API\obj\Debug\netcoreapp2.0\Library.API.dll
 C:\MyDevelopment\Library\src\Library.API\obj\Debug\netcoreapp2.0\Library.API.pdb
+C:\MyDevelopment\LibraryAPI\src\Library.API\obj\Debug\netcoreapp2.0\Library.API.csprojAssemblyReference.cache
+C:\MyDevelopment\LibraryAPI\src\Library.API\obj\Debug\netcoreapp2.0\Library.API.csproj.CoreCompileInputs.cache
+C:\MyDevelopment\LibraryAPI\src\Library.API\obj\Debug\netcoreapp2.0\Library.API.AssemblyInfoInputs.cache
+C:\MyDevelopment\LibraryAPI\src\Library.API\obj\Debug\netcoreapp2.0\Library.API.AssemblyInfo.cs
+C:\MyDevelopment\LibraryAPI\src\Library.API\obj\Debug\netcoreapp2.0\Library.API.dll
+C:\MyDevelopment\LibraryAPI\src\Library.API\obj\Debug\netcoreapp2.0\Library.API.pdb
+C:\MyDevelopment\LibraryAPI\src\Library.API\bin\Debug\netcoreapp2.0\Library.API.deps.json
+C:\MyDevelopment\LibraryAPI\src\Library.API\bin\Debug\netcoreapp2.0\Library.API.runtimeconfig.json
+C:\MyDevelopment\LibraryAPI\src\Library.API\bin\Debug\netcoreapp2.0\Library.API.runtimeconfig.dev.json
+C:\MyDevelopment\LibraryAPI\src\Library.API\bin\Debug\netcoreapp2.0\Library.API.dll
+C:\MyDevelopment\LibraryAPI\src\Library.API\bin\Debug\netcoreapp2.0\Library.API.pdb
